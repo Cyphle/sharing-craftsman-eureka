@@ -30,14 +30,14 @@ ymldata="$(parse_yaml $source)"
 infos=(${ymldata// / })
 
 # DOCKER
-dockerPortEntry='user_docker_port'
-dockerNetworkEntry='user_docker_network'
+dockerPortEntry='eureka_docker_port'
+dockerNetworkEntry='eureka_docker_network'
 
 dockerPortLength=$((${#infos[0]} - ${#dockerPortEntry} - 5))
-dockerNetworkLength=$((${#infos[0]} - ${#dockerNetworkEntry} - 5))
+dockerNetworkLength=$((${#infos[1]} - ${#dockerNetworkEntry} - 5))
 
 dockerPort=${infos[0]:${#dockerPortEntry} + 3:dockerPortLength}
-dockerNetwork=${infos[0]:${#dockerNetworkEntry} + 3:dockerNetworkLength}
+dockerNetwork=${infos[1]:${#dockerNetworkEntry} + 3:dockerNetworkLength}
 
 sed -i -e "s/<APP_PORT>/\"${dockerPort}\"/g" $composeTarget
 sed -i -e "s/<DOCKER_NETWORK>/${dockerNetwork}/g" $composeTarget
