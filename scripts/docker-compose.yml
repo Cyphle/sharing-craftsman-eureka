@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  user:
+    build: .
+    container_name: sc_user
+    ports:
+      - <APP_PORT>
+    volumes:
+     - <UPLOAD_PATH>:/app/upload
+     - <LOGS_PATH>:/app/logs
+
+networks:
+  default:
+    external:
+      name: <DOCKER_NETWORK>
