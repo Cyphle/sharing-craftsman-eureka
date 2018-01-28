@@ -1,0 +1,4 @@
+user:
+  docker:
+    port: "172.17.0.1:8099:8080"
+    network: scnetwork
