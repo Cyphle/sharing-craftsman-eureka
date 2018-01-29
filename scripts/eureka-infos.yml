@@ -1,4 +1,4 @@
 eureka:
   docker:
-    port: "172.17.0.1:8099:8080"
+    port: "172.17.0.1:8099:8099"
     network: scnetwork
